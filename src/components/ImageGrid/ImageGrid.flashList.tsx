@@ -1,4 +1,4 @@
-import {MasonryListRenderItem} from '@shopify/flash-list';
+import {ListRenderItem} from '@shopify/flash-list';
 import {IImage} from '../../types/image';
 import {LogBox} from 'react-native';
 import {ImageOptimized} from '../ImageOptimized';
@@ -12,7 +12,7 @@ console.warn = (...args) => {
   }
 };
 
-export const imageGridRenderItem: MasonryListRenderItem<IImage> = ({item}) => (
+export const imageGridRenderItem: ListRenderItem<IImage> = ({item}) => (
   <ImageOptimized {...{image: item}} />
 );
 export const imageGridKeyExtractor = (item: IImage) => item.id;

@@ -2,13 +2,13 @@ import React, {useMemo} from 'react';
 import {ActivityIndicator, Platform, StyleSheet} from 'react-native';
 import {observer} from 'mobx-react-lite';
 import {useImageStore} from '../../hooks/useStore';
-import {DEFAULT_INDENT} from '../../constants/styles';
+import {DEFAULT_INDENT, IMAGE_HEIGHT} from '../../constants/styles';
 import debounce from 'lodash.debounce';
 import {
   imageGridKeyExtractor,
   imageGridRenderItem,
 } from './ImageGrid.flashList';
-import {MasonryFlashList} from '@shopify/flash-list';
+import {FlashList} from '@shopify/flash-list';
 
 export const ImageGrid = observer(() => {
   const imageStore = useImageStore();
@@ -25,7 +25,8 @@ export const ImageGrid = observer(() => {
   }, [isNotEmpty, loading]);
 
   return (
-    <MasonryFlashList
+    <FlashList
+      estimatedItemSize={IMAGE_HEIGHT}
       showsVerticalScrollIndicator={false}
       data={imageStore.images}
       numColumns={2}

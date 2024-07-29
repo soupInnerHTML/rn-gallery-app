@@ -7,6 +7,7 @@ import {Skeleton} from './Skeleton';
 import Animated from 'react-native-reanimated';
 import {useSmoothImage} from '../hooks/useSmoothImage';
 import {IImage} from '../types/image';
+import {IMAGE_HEIGHT} from '../constants/styles';
 
 interface ImageOptimizedProps {
   image: IImage;
@@ -18,16 +19,14 @@ export const ImageOptimized: FC<ImageOptimizedProps> = memo(
   ({image}) => {
     const imageWidth = useWindowDimensions().width / 2;
     const navigation = useNavigation();
-    const ratio = image.height / image.width;
-    const imageHeight = ratio * imageWidth;
     const {loading, ...smoothImage} = useSmoothImage();
     return (
       <TouchableOpacity
         onPress={() => navigation.navigate(ROUTE.IMAGE_VIEW, {image})}>
-        {loading && <Skeleton height={imageHeight} width={imageWidth} />}
+        {loading && <Skeleton height={IMAGE_HEIGHT} width={imageWidth} />}
         <AnimatedFastImage
           {...smoothImage}
-          style={[smoothImage.style, {height: imageHeight, width: imageWidth}]}
+          style={[smoothImage.style, {height: IMAGE_HEIGHT, width: imageWidth}]}
           source={{
             uri: image.urls.thumb,
             priority: FastImage.priority.high,
