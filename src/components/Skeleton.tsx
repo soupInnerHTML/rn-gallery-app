@@ -1,5 +1,4 @@
 import React, {FC} from 'react';
-
 import ReanimatedSkeleton from 'react-native-reanimated-skeleton';
 import {commonStyles} from '../constants/styles';
 import {StyleSheet} from 'react-native';

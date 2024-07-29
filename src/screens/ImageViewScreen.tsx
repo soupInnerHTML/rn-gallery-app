@@ -1,5 +1,5 @@
 import React, {FC, useMemo} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {ImageViewScreenProps} from '../types/navigation';
 import HeartFilled from '../assets/icons/heartFilled.svg';
 import HeartOutline from '../assets/icons/heartOutline.svg';
@@ -8,6 +8,7 @@ import {observer} from 'mobx-react-lite';
 import dayjs from 'dayjs';
 import {ZoomableImage} from '../components/ZoomableImage';
 import {commonStyles, DEFAULT_INDENT} from '../constants/styles';
+import FastImage from 'react-native-fast-image';
 
 export const ImageViewScreen: FC<ImageViewScreenProps> = observer(({route}) => {
   const {image} = route.params;
@@ -24,7 +25,7 @@ export const ImageViewScreen: FC<ImageViewScreenProps> = observer(({route}) => {
     <View style={commonStyles.full}>
       <ZoomableImage uri={image.urls.full} />
       <View style={styles.contact}>
-        <Image
+        <FastImage
           source={{uri: image.user.profile_image.small}}
           style={styles.avatar}
         />

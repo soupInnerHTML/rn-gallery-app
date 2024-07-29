@@ -33,7 +33,6 @@ class ImageStore {
         this.loading = false;
       } catch (e) {
         this.setError('Error fetching images. Please, try to use vpn');
-        this.loading = false;
       }
     }
   }
@@ -43,7 +42,6 @@ class ImageStore {
       yield api.post(`photos/${id}/like`);
     } catch (e) {
       this.setError('This functionality will be added in the future.');
-      this.loading = false;
     }
   }
 
@@ -55,6 +53,7 @@ class ImageStore {
 
   @action.bound setError(error: string) {
     this.error = error;
+    this.loading = false;
   }
 }
 
