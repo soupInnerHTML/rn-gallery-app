@@ -3,7 +3,7 @@ import {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 
 export const useSmoothImage = () => {
   const [loading, setLoading] = useState(true);
@@ -12,12 +12,6 @@ export const useSmoothImage = () => {
   const animatedImageStyle = useAnimatedStyle(() => ({
     opacity: opacity.value,
   }));
-
-  useEffect(() => {
-    if (loading) {
-      opacity.value = 0;
-    }
-  }, [loading]);
 
   return {
     loading,

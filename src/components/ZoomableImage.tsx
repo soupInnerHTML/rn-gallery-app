@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import {StyleSheet, useWindowDimensions, View} from 'react-native';
-
 import {ImageZoom} from '@likashefqet/react-native-image-zoom';
 import {Skeleton} from './Skeleton';
 import {useSmoothImage} from '../hooks/useSmoothImage';
@@ -20,7 +19,7 @@ export const ZoomableImage: FC<ZoomableImage> = ({uri}) => {
       <Animated.View style={[smoothImageStyle, commonStyles.full]}>
         <ImageZoom
           {...smoothImage}
-          uri={uri}
+          {...{uri}}
           minScale={0.5}
           maxScale={5}
           doubleTapScale={3}
